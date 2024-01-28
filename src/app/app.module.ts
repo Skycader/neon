@@ -5,12 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { NeonEditorModule } from './neon-editor/neon-editor.module';
+import { NeonCommonModule } from './neon-common/neon-common.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./neon-editor/neon-editor.module').then(
+        (m) => m.NeonEditorModule,
+      ),
+  },
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    NeonCommonModule,
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -18,10 +31,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

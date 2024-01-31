@@ -1,12 +1,19 @@
 <div class="neon-editor">
+  <h1>Create your event</h1>
+
   <mat-form-field>
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" />
-      <input matEndDate placeholder="End date" />
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-label>Enter your event title</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
   </mat-form-field>
 </div>

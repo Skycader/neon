@@ -4,10 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NavbarService {
-  public isSideNav: boolean = false;
+  private _isSideNav: boolean = false;
   constructor() { }
 
+  public get isSideNav() {
+    return this._isSideNav;
+  }
+  public openSideNav() {
+    this._isSideNav = true;
+  }
   public toggleSideNav(): void {
-    this.isSideNav = !this.isSideNav;
+    this._isSideNav = !this.isSideNav;
   }
 }
